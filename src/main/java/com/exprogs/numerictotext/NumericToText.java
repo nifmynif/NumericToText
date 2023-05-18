@@ -4,8 +4,14 @@ public class NumericToText {
     private StringBuilder res = new StringBuilder();
     private byte i = 0;
     private long num;
+    private boolean sign;
 
     public void setNum(long num) {
+        if (num < 0) {
+            sign = false;
+            num *= -1;
+        } else
+            sign = true;
         this.num = num;
     }
 
@@ -13,13 +19,21 @@ public class NumericToText {
     }
 
     public NumericToText(long num) {
+        if (num < 0) {
+            sign = false;
+            num *= -1;
+        } else
+            sign = true;
         this.num = num;
     }
 
     public String getText() {
         i = 0;
         res = new StringBuilder();
-        return numericToText(num, (byte) 0).toString();
+        if (!sign)
+            return numericToText(num, (byte) 0).insert(0, "Минус ").toString();
+        else
+            return numericToText(num, (byte) 0).toString();
     }
 
     private StringBuilder numericToText(long num, byte prev) {
