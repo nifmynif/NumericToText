@@ -6,6 +6,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.exprogs.numerictotext.HelloController">
     <padding>
@@ -13,6 +14,8 @@
     </padding>
 
     <Label fx:id="output"/>
+    <CheckBox fx:id="test" onAction="#onCheckboxClick"/>
+    <TextField fx:id="inputTest" visible="false"/>
     <TextField fx:id="input"/>
     <Button text="Hello!" onAction="#onHelloButtonClick"/>
 </VBox>

@@ -36,9 +36,9 @@ public class NumericToText {
         i = 0;
         res = new StringBuilder();
         if (!sign)
-            return numericToText(num, (byte) 0).insert(0, "Минус ").toString();
+            return numericToText(num, (byte) 0).insert(0, "Минус ").toString().trim();
         else
-            return numericToText(num, (byte) 0).toString();
+            return numericToText(num, (byte) 0).toString().trim();
     }
 
     private StringBuilder numericToText(BigInteger num, byte prev) {
