@@ -8,7 +8,6 @@ public class Constants {
     public static final ArrayList<String> VALUE = new ArrayList<>();
 
     static {
-        VALUE.add("");
         VALUE.add("один");
         VALUE.add("два");
         VALUE.add("три");
@@ -23,7 +22,6 @@ public class Constants {
     public static final ArrayList<String> VALUE_MOD = new ArrayList<>();
 
     static {
-        VALUE_MOD.add("");
         VALUE_MOD.add("одна");
         VALUE_MOD.add("две");
         VALUE_MOD.add("три");
@@ -53,8 +51,6 @@ public class Constants {
     public static final ArrayList<String> VALUE_DOUBLE = new ArrayList<>();
 
     static {
-        VALUE_DOUBLE.add("");
-        VALUE_DOUBLE.add("");
         VALUE_DOUBLE.add("двадцать");
         VALUE_DOUBLE.add("тридцать");
         VALUE_DOUBLE.add("сорок");
@@ -68,7 +64,6 @@ public class Constants {
     public static final ArrayList<String> HUNDRED = new ArrayList<>();
 
     static {
-        HUNDRED.add("");
         HUNDRED.add("сто");
         HUNDRED.add("двести");
         HUNDRED.add("триста");
@@ -83,7 +78,6 @@ public class Constants {
     private static final ArrayList<String> SUFFIX = new ArrayList<>();
 
     static {
-        SUFFIX.add("");
         SUFFIX.add("тысяч");
         SUFFIX.add("миллион");
         SUFFIX.add("миллиард");
@@ -100,13 +94,10 @@ public class Constants {
     public static final ArrayList<String> SUFFIX_FIVE_TO_NINE = new ArrayList<>();
 
     static {
-        SUFFIX_ONE.add("");
-        SUFFIX_ONE.add(SUFFIX.get(1) + "a");
-        SUFFIX_TWO_FOUR.add("");
-        SUFFIX_TWO_FOUR.add(SUFFIX.get(1) + "и");
-        SUFFIX_FIVE_TO_NINE.add("");
-        SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(1));
-        for (int i = 2; i < SUFFIX.size(); i++) {
+        SUFFIX_ONE.add(SUFFIX.get(0) + "a");
+        SUFFIX_TWO_FOUR.add(SUFFIX.get(0) + "и");
+        SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(0));
+        for (int i = 1; i < SUFFIX.size(); i++) {
             SUFFIX_ONE.add(SUFFIX.get(i));
             SUFFIX_TWO_FOUR.add(SUFFIX.get(i) + "а");
             SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(i) + "ов");
