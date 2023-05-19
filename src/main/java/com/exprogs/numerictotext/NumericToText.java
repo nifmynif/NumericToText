@@ -1,6 +1,7 @@
 package com.exprogs.numerictotext;
 
 import java.math.BigInteger;
+import java.util.zip.DataFormatException;
 
 public class NumericToText {
     private StringBuilder res = new StringBuilder();
@@ -8,10 +9,14 @@ public class NumericToText {
     private BigInteger num;
     private boolean sign;
 
-    public void setNum(String num) {
-        num = num.replaceAll("\\D", "");
-        if (num.isEmpty())
-            num = "0";
+    public void setNum(String num) throws DataFormatException {
+        num = num.replaceAll(" ", "");
+        if (num.isEmpty()
+                || num.equals("-")
+                || (num.matches(".*\\W.*") && !num.matches(".*-.*"))
+                || (num.matches(".*\\D.*") && !num.matches(".*-.*"))
+                || (num.matches(".*-.*") && num.lastIndexOf("-") != 0))
+            throw new DataFormatException("введено не число");
         this.num = new BigInteger(num);
         if (this.num.compareTo(BigInteger.ZERO) < 0) {
             sign = false;
@@ -23,7 +28,7 @@ public class NumericToText {
     public NumericToText() {
     }
 
-    public NumericToText(String num) {
+    public NumericToText(String num) throws DataFormatException {
         setNum(num);
     }
 

@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.zip.DataFormatException;
+
 public class HelloController {
     @FXML
     private Label output;
@@ -15,8 +17,12 @@ public class HelloController {
         output.setText("");
         NumericToText numeric = new NumericToText();
         for (String el : input.getText().split(",")) {
-            numeric.setNum(el);
-            output.setText(output.getText() + "\n" + numeric.getText());
+            try {
+                numeric.setNum(el);
+                output.setText(output.getText() + "\n" + numeric.getText());
+            } catch (DataFormatException e) {
+                output.setText(output.getText() + "\n" + e.getMessage());
+            }
         }
     }
 }
