@@ -9,10 +9,9 @@ public class NumericToText {
     private boolean sign;
 
     public void setNum(String num) {
+        num = num.replaceAll("\\D", "");
         if (num.isEmpty())
             num = "0";
-        else
-            num = num.replaceAll("\\D", "");
         this.num = new BigInteger(num);
         if (this.num.compareTo(BigInteger.ZERO) < 0) {
             sign = false;
