@@ -57,7 +57,7 @@ public class NumericToText {
             else if (unit > 1 && unit < 5 && b)
                 res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_TWO_FOUR.get((i / 3) - 1));//Поставить суффиксы со склонениями при 2-4
             else
-                res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_FIVE_TO_NINE.get((i / 3) - 1));//Поставить суффиксы со склонениями при 5-9 и 0
+                res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_FIVE_TO_NINETEEN.get((i / 3) - 1));//Поставить суффиксы со склонениями при 5-19
         }
         if (i % 3 == 0) {//Проверка сотен (каждая третья цифра)
             res.insert(0, Constants.SPACE).insert(0, Constants.HUNDRED.get(unit - 1));

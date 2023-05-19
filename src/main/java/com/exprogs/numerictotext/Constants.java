@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Constants {
     public static final String SPACE = " ";
     public static final String ZERO = "ноль";
-    public static final ArrayList<String> VALUE = new ArrayList<>();
+    public static final ArrayList<String> VALUE = new ArrayList<>();//Единицы
 
     static {
         VALUE.add("один");
@@ -19,7 +19,7 @@ public class Constants {
         VALUE.add("девять");
     }
 
-    public static final ArrayList<String> VALUE_MOD = new ArrayList<>();
+    public static final ArrayList<String> VALUE_MOD = new ArrayList<>();//Единицы со склонениями
 
     static {
         VALUE_MOD.add("одна");
@@ -33,7 +33,7 @@ public class Constants {
         VALUE_MOD.add("девять");
     }
 
-    public static final ArrayList<String> VALUE_UNIT_DOUBLE = new ArrayList<>();
+    public static final ArrayList<String> VALUE_UNIT_DOUBLE = new ArrayList<>();//Десятки где 1
 
     static {
         VALUE_UNIT_DOUBLE.add("десять");
@@ -48,7 +48,7 @@ public class Constants {
         VALUE_UNIT_DOUBLE.add("девятнадцать");
     }
 
-    public static final ArrayList<String> VALUE_DOUBLE = new ArrayList<>();
+    public static final ArrayList<String> VALUE_DOUBLE = new ArrayList<>();//Остальные десятки
 
     static {
         VALUE_DOUBLE.add("двадцать");
@@ -61,7 +61,7 @@ public class Constants {
         VALUE_DOUBLE.add("девяносто");
     }
 
-    public static final ArrayList<String> HUNDRED = new ArrayList<>();
+    public static final ArrayList<String> HUNDRED = new ArrayList<>();//Сотни
 
     static {
         HUNDRED.add("сто");
@@ -75,7 +75,7 @@ public class Constants {
         HUNDRED.add("девятьсот");
     }
 
-    private static final ArrayList<String> SUFFIX = new ArrayList<>();
+    private static final ArrayList<String> SUFFIX = new ArrayList<>();// Приставки
 
     static {
         SUFFIX.add("тысяч");
@@ -90,20 +90,20 @@ public class Constants {
         SUFFIX.add("нониллион");
     }
 
-    public static final ArrayList<String> SUFFIX_ONE = new ArrayList<>();
+    public static final ArrayList<String> SUFFIX_ONE = new ArrayList<>();//Приставки если 1
 
-    public static final ArrayList<String> SUFFIX_TWO_FOUR = new ArrayList<>();
+    public static final ArrayList<String> SUFFIX_TWO_FOUR = new ArrayList<>();//Приставки если 2-4
 
-    public static final ArrayList<String> SUFFIX_FIVE_TO_NINE = new ArrayList<>();
+    public static final ArrayList<String> SUFFIX_FIVE_TO_NINETEEN = new ArrayList<>();//Приставки если 5-19
 
-    static {
+    static {//Склоняем приставки
         SUFFIX_ONE.add(SUFFIX.get(0) + "а");
         SUFFIX_TWO_FOUR.add(SUFFIX.get(0) + "и");
-        SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(0));
+        SUFFIX_FIVE_TO_NINETEEN.add(SUFFIX.get(0));
         for (int i = 1; i < SUFFIX.size(); i++) {
             SUFFIX_ONE.add(SUFFIX.get(i));
             SUFFIX_TWO_FOUR.add(SUFFIX.get(i) + "а");
-            SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(i) + "ов");
+            SUFFIX_FIVE_TO_NINETEEN.add(SUFFIX.get(i) + "ов");
         }
     }
 }
