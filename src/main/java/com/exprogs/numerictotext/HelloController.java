@@ -12,8 +12,11 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
+        output.setText("");
         NumericToText numeric = new NumericToText();
-        numeric.setNum(input.getCharacters().toString());
-        output.setText(numeric.getText());
+        for (String el : input.getText().split(",")) {
+            numeric.setNum(el);
+            output.setText(output.getText() + "\n" + numeric.getText());
+        }
     }
 }
