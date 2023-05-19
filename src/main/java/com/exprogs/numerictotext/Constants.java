@@ -1,122 +1,115 @@
 package com.exprogs.numerictotext;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Constants {
     public static final String SPACE = " ";
     public static final String ZERO = "ноль";
-    public static final HashMap<Integer, String> VALUE = new HashMap<>();
+    public static final ArrayList<String> VALUE = new ArrayList<>();
 
     static {
-        VALUE.put(1, "один");
-        VALUE.put(2, "два");
-        VALUE.put(3, "три");
-        VALUE.put(4, "четыре");
-        VALUE.put(5, "пять");
-        VALUE.put(6, "шесть");
-        VALUE.put(7, "семь");
-        VALUE.put(8, "восемь");
-        VALUE.put(9, "девять");
+        VALUE.add("");
+        VALUE.add("один");
+        VALUE.add("два");
+        VALUE.add("три");
+        VALUE.add("четыре");
+        VALUE.add("пять");
+        VALUE.add("шесть");
+        VALUE.add("семь");
+        VALUE.add("восемь");
+        VALUE.add("девять");
     }
 
-    public static final HashMap<Integer, String> VALUE_MOD = new HashMap<>();
+    public static final ArrayList<String> VALUE_MOD = new ArrayList<>();
 
     static {
-        VALUE_MOD.put(1, "одна");
-        VALUE_MOD.put(2, "две");
-        VALUE_MOD.put(3, "три");
-        VALUE_MOD.put(4, "четыре");
-        VALUE_MOD.put(5, "пять");
-        VALUE_MOD.put(6, "шесть");
-        VALUE_MOD.put(7, "семь");
-        VALUE_MOD.put(8, "восемь");
-        VALUE_MOD.put(9, "девять");
+        VALUE_MOD.add("");
+        VALUE_MOD.add("одна");
+        VALUE_MOD.add("две");
+        VALUE_MOD.add("три");
+        VALUE_MOD.add("четыре");
+        VALUE_MOD.add("пять");
+        VALUE_MOD.add("шесть");
+        VALUE_MOD.add("семь");
+        VALUE_MOD.add("восемь");
+        VALUE_MOD.add("девять");
     }
 
-    public static final HashMap<Integer, String> VALUE_UNIT_DOUBLE = new HashMap<>();
+    public static final ArrayList<String> VALUE_UNIT_DOUBLE = new ArrayList<>();
 
     static {
-        VALUE_UNIT_DOUBLE.put(0, "десять");
-        VALUE_UNIT_DOUBLE.put(1, "одиннадцать");
-        VALUE_UNIT_DOUBLE.put(2, "двенадцать");
-        VALUE_UNIT_DOUBLE.put(3, "тринадцать");
-        VALUE_UNIT_DOUBLE.put(4, "четырнадцать");
-        VALUE_UNIT_DOUBLE.put(5, "пятнадцать");
-        VALUE_UNIT_DOUBLE.put(6, "шестнадцать");
-        VALUE_UNIT_DOUBLE.put(7, "семнадцать");
-        VALUE_UNIT_DOUBLE.put(8, "восемнадцать");
-        VALUE_UNIT_DOUBLE.put(9, "девятнадцать");
+        VALUE_UNIT_DOUBLE.add("десять");
+        VALUE_UNIT_DOUBLE.add("одиннадцать");
+        VALUE_UNIT_DOUBLE.add("двенадцать");
+        VALUE_UNIT_DOUBLE.add("тринадцать");
+        VALUE_UNIT_DOUBLE.add("четырнадцать");
+        VALUE_UNIT_DOUBLE.add("пятнадцать");
+        VALUE_UNIT_DOUBLE.add("шестнадцать");
+        VALUE_UNIT_DOUBLE.add("семнадцать");
+        VALUE_UNIT_DOUBLE.add("восемнадцать");
+        VALUE_UNIT_DOUBLE.add("девятнадцать");
     }
 
-    public static final HashMap<Integer, String> VALUE_DOUBLE = new HashMap<>();
+    public static final ArrayList<String> VALUE_DOUBLE = new ArrayList<>();
 
     static {
-        VALUE_DOUBLE.put(2, "двадцать");
-        VALUE_DOUBLE.put(3, "тридцать");
-        VALUE_DOUBLE.put(4, "сорок");
-        VALUE_DOUBLE.put(5, "пятьдесят");
-        VALUE_DOUBLE.put(6, "шестьдесят");
-        VALUE_DOUBLE.put(7, "семьдесят");
-        VALUE_DOUBLE.put(8, "восемьдесят");
-        VALUE_DOUBLE.put(9, "девяносто");
+        VALUE_DOUBLE.add("");
+        VALUE_DOUBLE.add("");
+        VALUE_DOUBLE.add("двадцать");
+        VALUE_DOUBLE.add("тридцать");
+        VALUE_DOUBLE.add("сорок");
+        VALUE_DOUBLE.add("пятьдесят");
+        VALUE_DOUBLE.add("шестьдесят");
+        VALUE_DOUBLE.add("семьдесят");
+        VALUE_DOUBLE.add("восемьдесят");
+        VALUE_DOUBLE.add("девяносто");
     }
 
-    public static final HashMap<Integer, String> HUNDRED = new HashMap<>();
+    public static final ArrayList<String> HUNDRED = new ArrayList<>();
 
     static {
-        HUNDRED.put(1, "сто");
-        HUNDRED.put(2, "двести");
-        HUNDRED.put(3, "триста");
-        HUNDRED.put(4, "четыреста");
-        HUNDRED.put(5, "пятьсот");
-        HUNDRED.put(6, "шестьсот");
-        HUNDRED.put(7, "семьсот");
-        HUNDRED.put(8, "восемьсот");
-        HUNDRED.put(9, "девятьсот");
+        HUNDRED.add("");
+        HUNDRED.add("сто");
+        HUNDRED.add("двести");
+        HUNDRED.add("триста");
+        HUNDRED.add("четыреста");
+        HUNDRED.add("пятьсот");
+        HUNDRED.add("шестьсот");
+        HUNDRED.add("семьсот");
+        HUNDRED.add("восемьсот");
+        HUNDRED.add("девятьсот");
     }
 
-    private static final HashMap<Integer, String> SUFFIX = new HashMap<>();
+    private static final ArrayList<String> SUFFIX = new ArrayList<>();
 
     static {
-        SUFFIX.put(1, "тысяч");
-        SUFFIX.put(2, "миллион");
-        SUFFIX.put(3, "миллиард");
-        SUFFIX.put(4, "триллион");
-        SUFFIX.put(5, "квадриллион");
-        SUFFIX.put(6, "квинтиллион");
-        SUFFIX.put(7, "секстиллион");
+        SUFFIX.add("");
+        SUFFIX.add("тысяч");
+        SUFFIX.add("миллион");
+        SUFFIX.add("миллиард");
+        SUFFIX.add("триллион");
+        SUFFIX.add("квадриллион");
+        SUFFIX.add("квинтиллион");
+        SUFFIX.add("секстиллион");
     }
 
-    public static final HashMap<Integer, String> SUFFIX_ONE = new HashMap<>();
+    public static final ArrayList<String> SUFFIX_ONE = new ArrayList<>();
+
+    public static final ArrayList<String> SUFFIX_TWO_FOUR = new ArrayList<>();
+
+    public static final ArrayList<String> SUFFIX_FIVE_TO_NINE = new ArrayList<>();
 
     static {
-        SUFFIX.forEach((key, value) -> {
-            if (key == 1)
-                SUFFIX_ONE.put(key, value + "а");
-            else
-                SUFFIX_ONE.put(key, value);
-        });
-    }
-
-    public static final HashMap<Integer, String> SUFFIX_TWO_FOUR = new HashMap<>();
-
-    static {
-        SUFFIX.forEach((key, value) -> {
-            if (key == 1)
-                SUFFIX_TWO_FOUR.put(key, value + "и");
-            else
-                SUFFIX_TWO_FOUR.put(key, value + "а");
-        });
-    }
-
-    public static final HashMap<Integer, String> SUFFIX_FIVE_TO_NINE = new HashMap<>();
-
-    static {
-        SUFFIX.forEach((key, value) -> {
-            if (key == 1)
-                SUFFIX_FIVE_TO_NINE.put(key, value);
-            else
-                SUFFIX_FIVE_TO_NINE.put(key, value + "ов");
-        });
+        SUFFIX_ONE.add("");
+        SUFFIX_ONE.add(SUFFIX.get(1) + "a");
+        SUFFIX_TWO_FOUR.add("");
+        SUFFIX_TWO_FOUR.add(SUFFIX.get(1) + "и");
+        SUFFIX_FIVE_TO_NINE.add("");
+        SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(1));
+        for (int i = 2; i < SUFFIX.size(); i++) {
+            SUFFIX_ONE.add(SUFFIX.get(i));
+            SUFFIX_TWO_FOUR.add(SUFFIX.get(i) + "а");
+            SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(i) + "ов");
+        }
     }
 }

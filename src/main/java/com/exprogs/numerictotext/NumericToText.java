@@ -44,58 +44,30 @@ public class NumericToText {
         byte unit = (byte) (num % 10);
         i += 1;
         if ((i - 1) % 3 == 0 && i > 3) {
-            if (unit == 1 && ((num / 10) % 10) != 1) {
-                Constants.SUFFIX_ONE.forEach((key, value) -> {
-                    if (key == i / 3)
-                        res.insert(0, Constants.SPACE).insert(0, value);
-                });
-            } else if (unit > 1 && unit < 5 && ((num / 10) % 10) != 1) {
-                Constants.SUFFIX_TWO_FOUR.forEach((key, value) -> {
-                    if (key == i / 3)
-                        res.insert(0, Constants.SPACE).insert(0, value);
-                });
-            } else if (((num / 10) % 10) != 0 || ((num / 100) % 10) != 0 || unit != 0) {
-                Constants.SUFFIX_FIVE_TO_NINE.forEach((key, value) -> {
-                    if (key == i / 3)
-                        res.insert(0, Constants.SPACE).insert(0, value);
-                });
-            }
+            if (unit == 1 && ((num / 10) % 10) != 1)
+                res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_ONE.get(i / 3));
+            else if (unit > 1 && unit < 5 && ((num / 10) % 10) != 1)
+                res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_TWO_FOUR.get(i / 3));
+            else if (((num / 10) % 10) != 0 || ((num / 100) % 10) != 0 || unit != 0)
+                res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_FIVE_TO_NINE.get(i / 3));
         }
         if (i % 3 == 0) {
-            Constants.HUNDRED.forEach((key, value) -> {
-                if (key == unit)
-                    res.insert(0, Constants.SPACE).insert(0, value);
-            });
+            res.insert(0, Constants.SPACE).insert(0, Constants.HUNDRED.get(unit));
             return numericToText(num / 10, unit);
         }
         if ((i + 1) % 3 == 0) {
             if ((num % 10) == 1) {
-                Constants.VALUE_UNIT_DOUBLE.forEach((key, value) -> {
-                    if (key == prev) {
-                        if (prev != 0)
-                            res.delete(0, res.indexOf(Constants.SPACE) + 1);
-                        res.insert(0, Constants.SPACE).insert(0, value);
-                    }
-                });
-            } else {
-                Constants.VALUE_DOUBLE.forEach((key, value) -> {
-                    if (key == unit)
-                        res.insert(0, Constants.SPACE).insert(0, value);
-                });
-            }
+                if (prev != 0)
+                    res.delete(0, res.indexOf(Constants.SPACE) + 1);
+                res.insert(0, Constants.SPACE).insert(0, Constants.VALUE_UNIT_DOUBLE.get(prev));
+            } else
+                res.insert(0, Constants.SPACE).insert(0, Constants.VALUE_DOUBLE.get(unit));
             return numericToText(num / 10, unit);
         }
-        if (i > 3 && i < 7) {
-            Constants.VALUE_MOD.forEach((key, value) -> {
-                if (key == unit)
-                    res.insert(0, Constants.SPACE).insert(0, value);
-            });
-        } else {
-            Constants.VALUE.forEach((key, value) -> {
-                if (key == unit)
-                    res.insert(0, Constants.SPACE).insert(0, value);
-            });
-        }
+        if (i > 3 && i < 7)
+            res.insert(0, Constants.SPACE).insert(0, Constants.VALUE_MOD.get(unit));
+        else
+            res.insert(0, Constants.SPACE).insert(0, Constants.VALUE.get(unit));
         return numericToText(num / 10, unit);
     }
 }
