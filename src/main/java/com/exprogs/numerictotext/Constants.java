@@ -97,7 +97,7 @@ public class Constants {
     public static final ArrayList<String> SUFFIX_FIVE_TO_NINE = new ArrayList<>();
 
     static {
-        SUFFIX_ONE.add(SUFFIX.get(0) + "a");
+        SUFFIX_ONE.add(SUFFIX.get(0) + "а");
         SUFFIX_TWO_FOUR.add(SUFFIX.get(0) + "и");
         SUFFIX_FIVE_TO_NINE.add(SUFFIX.get(0));
         for (int i = 1; i < SUFFIX.size(); i++) {

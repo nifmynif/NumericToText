@@ -14,27 +14,27 @@ class NumericToTextTest {
             NumericToText numeric = new NumericToText("");
             assertEquals("DataFormatException", numeric.getText());
         } catch (DataFormatException e) {
-            assertEquals("введено не число", e.getMessage());
+            assertEquals("РІРІРµРґРµРЅРѕ РЅРµ С‡РёСЃР»Рѕ", e.getMessage());
         }
     }
     @Test
     void getTextZero() throws DataFormatException {
             NumericToText numeric = new NumericToText("0");
-            assertEquals("ноль", numeric.getText());
+            assertEquals("РЅРѕР»СЊ", numeric.getText());
     }
     @Test
     void getTextOne() throws DataFormatException {
         NumericToText numeric = new NumericToText("1");
-        assertEquals("один", numeric.getText());
+        assertEquals("РѕРґРёРЅ", numeric.getText());
     }
     @Test
     void getTextMinesOne() throws DataFormatException {
         NumericToText numeric = new NumericToText("-1");
-        assertEquals("Минус один", numeric.getText());
+        assertEquals("РњРёРЅСѓСЃ РѕРґРёРЅ", numeric.getText());
     }
     @Test
     void getTextMinesOneHausenOneHandedOne() throws DataFormatException {
         NumericToText numeric = new NumericToText("1 101");
-        assertEquals("одна тысяча сто один", numeric.getText());
+        assertEquals("РѕРґРЅР° С‚С‹СЃСЏС‡Р° СЃС‚Рѕ РѕРґРёРЅ", numeric.getText());
     }
 }

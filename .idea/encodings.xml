@@ -3,5 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/com/exprogs/numerictotext/NumericToTextTest.java" charset="UTF-8" />
+    <file url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19-ea+7/javafx-fxml-19-ea+7-win.jar!/javafx/fxml/FXMLLoader.class" charset="UTF-16BE" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
