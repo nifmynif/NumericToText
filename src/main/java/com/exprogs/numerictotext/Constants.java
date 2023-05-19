@@ -85,6 +85,9 @@ public class Constants {
         SUFFIX.add("квадриллион");
         SUFFIX.add("квинтиллион");
         SUFFIX.add("секстиллион");
+        SUFFIX.add("септиллион");
+        SUFFIX.add("октиллион");
+        SUFFIX.add("нониллион");
     }
 
     public static final ArrayList<String> SUFFIX_ONE = new ArrayList<>();

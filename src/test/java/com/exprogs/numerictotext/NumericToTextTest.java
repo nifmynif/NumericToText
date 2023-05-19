@@ -8,7 +8,7 @@ class NumericToTextTest {
 
     @Test
     void getText() {
-        NumericToText numeric = new NumericToText(0);
+        NumericToText numeric = new NumericToText("0");
         assertEquals("ноль", numeric.getText());
     }
 }

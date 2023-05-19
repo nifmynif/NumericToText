@@ -13,7 +13,7 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClick() {
         NumericToText numeric = new NumericToText();
-        numeric.setNum(Long.parseLong(input.getCharacters().toString()));
+        numeric.setNum(input.getCharacters().toString());
         output.setText(numeric.getText());
     }
 }
