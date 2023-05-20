@@ -17,6 +17,8 @@ public class NumericToText {
                 || (num.matches(".*\\D.*") && !num.matches(".*-.*"))//Проверка на буквы
                 || (num.matches(".*-.*") && num.lastIndexOf("-") != 0))//Проверка чтобы знак стоял на своем месте
             throw new DataFormatException("введено не число");
+        if (num.length() > (Constants.SUFFIX.size() + 1) * 3)//Условие если введенное число больше чем то что можно обработать
+            throw new IndexOutOfBoundsException("мы еще не придумали названия этому числу(");
         this.num = new BigInteger(num);
         if (this.num.compareTo(BigInteger.ZERO) < 0) {//проверка знака числа
             sign = false;
@@ -47,8 +49,6 @@ public class NumericToText {
             return res;
         byte unit = num.mod(BigInteger.TEN).byteValue();//Взяли последнюю цифру числа
         i += 1;
-        if (i > Constants.SUFFIX.size())
-            throw new IndexOutOfBoundsException("мы еще не придумали названия этому числу(");
         if (unit == 0)
             return numericToText(num.divide(BigInteger.valueOf(10)), unit);//Если последняя цифра 0, то пропускаем
         if ((i - 1) % 3 == 0 && i > 3) {//Проверка на суффиксы (после каждых трех цифр)
