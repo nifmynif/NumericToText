@@ -75,7 +75,7 @@ public class Constants {
         HUNDRED.add("девятьсот");
     }
 
-    private static final ArrayList<String> SUFFIX = new ArrayList<>();// Приставки
+    public static final ArrayList<String> SUFFIX = new ArrayList<>();// Приставки
 
     static {
         SUFFIX.add("тысяч");

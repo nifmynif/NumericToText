@@ -28,10 +28,8 @@ public class HelloController {
                 try {
                     numeric.setNum(inputElements[i]);
                     output.setText(output.getText() + "\n" + numeric.getText().equals(inputTestElements[i].trim()));
-                } catch (DataFormatException e) {
+                } catch (DataFormatException | IndexOutOfBoundsException e) {
                     output.setText(output.getText() + "\n" + e.getMessage().equals(inputTestElements[i].trim()));
-                } catch (IndexOutOfBoundsException e) {
-                    output.setText(output.getText() + "\n" + "мы еще не придумали названия этому числу(");
                 }
             }
         } else {
@@ -39,10 +37,8 @@ public class HelloController {
                 try {
                     numeric.setNum(inputElement);
                     output.setText(output.getText() + "\n" + numeric.getText());
-                } catch (DataFormatException e) {
+                } catch (DataFormatException | IndexOutOfBoundsException e) {
                     output.setText(output.getText() + "\n" + e.getMessage());
-                } catch (IndexOutOfBoundsException e) {
-                    output.setText(output.getText() + "\n" + "мы еще не придумали названия этому числу(");
                 }
             }
         }
