@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.zip.DataFormatException;
 
 public class NumericToText {
-    private StringBuilder res = new StringBuilder();//Текстовый результат
+    private final StringBuilder res = new StringBuilder();//Текстовый результат
     private byte i = 0;//Итерация для отделения единиц, десятков и сотен
     private BigInteger num;//Входное число
     private boolean sign;//Знак
@@ -33,8 +33,7 @@ public class NumericToText {
     }
 
     public String getText() {
-        i = 0;
-        res = new StringBuilder();
+        res.setLength(i = 0);
         if (!sign)//Проверка на отрицательное число и удаление лишних пробелов
             return numericToText(num, (byte) 0).insert(0, "Минус ").toString().trim();
         else

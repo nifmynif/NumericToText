@@ -21,19 +21,21 @@ public class HelloController {
     protected void onHelloButtonClick() {
         output.setText("");
         NumericToText numeric = new NumericToText();
+        String[] inputElements = input.getText().split(",");
+        String[] inputTestElements = inputTest.getText().split(",");
         if (test.isSelected()) {
-            for (String el : input.getText().split(",")) {
+            for (int i = 0; i < inputElements.length && i < inputTestElements.length; i++) {
                 try {
-                    numeric.setNum(el);
-                    output.setText(output.getText() + "\n" + numeric.getText().equals(inputTest.getText()));
+                    numeric.setNum(inputElements[i]);
+                    output.setText(output.getText() + "\n" + numeric.getText().equals(inputTestElements[i].trim()));
                 } catch (DataFormatException e) {
-                    output.setText(output.getText() + "\n" + e.getMessage().equals(inputTest.getText()));
+                    output.setText(output.getText() + "\n" + e.getMessage().equals(inputTestElements[i].trim()));
                 }
             }
         } else {
-            for (String el : input.getText().split(",")) {
+            for (String inputElement : inputElements) {
                 try {
-                    numeric.setNum(el);
+                    numeric.setNum(inputElement);
                     output.setText(output.getText() + "\n" + numeric.getText());
                 } catch (DataFormatException e) {
                     output.setText(output.getText() + "\n" + e.getMessage());

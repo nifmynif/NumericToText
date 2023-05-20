@@ -15,7 +15,7 @@
 
     <Label fx:id="output"/>
     <CheckBox fx:id="test" onAction="#onCheckboxClick"/>
-    <TextField fx:id="inputTest" visible="false" promptText="введите буквенное значение числа"/>
-    <TextField fx:id="input" promptText="введите число"/>
+    <TextField fx:id="inputTest" visible="false" promptText="введите буквенное значение числа или через запятую чисел"/>
+    <TextField fx:id="input" promptText="введите число или через запятую числа"/>
     <Button text="Пуск" onAction="#onHelloButtonClick"/>
 </VBox>
