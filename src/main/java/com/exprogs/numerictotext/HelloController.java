@@ -30,6 +30,8 @@ public class HelloController {
                     output.setText(output.getText() + "\n" + numeric.getText().equals(inputTestElements[i].trim()));
                 } catch (DataFormatException e) {
                     output.setText(output.getText() + "\n" + e.getMessage().equals(inputTestElements[i].trim()));
+                } catch (IndexOutOfBoundsException e) {
+                    output.setText(output.getText() + "\n" + "мы еще не придумали названия этому числу(");
                 }
             }
         } else {
@@ -39,6 +41,8 @@ public class HelloController {
                     output.setText(output.getText() + "\n" + numeric.getText());
                 } catch (DataFormatException e) {
                     output.setText(output.getText() + "\n" + e.getMessage());
+                } catch (IndexOutOfBoundsException e) {
+                    output.setText(output.getText() + "\n" + "мы еще не придумали названия этому числу(");
                 }
             }
         }
