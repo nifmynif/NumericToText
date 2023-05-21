@@ -4,13 +4,13 @@ import java.math.BigInteger;
 import java.util.zip.DataFormatException;
 
 public class NumericToText {
-    private final StringBuilder res = new StringBuilder();//Текстовый результат
+    private StringBuilder res = new StringBuilder(" ");//Текстовый результат
     private byte i = 0;//Итерация для отделения единиц, десятков и сотен
     private BigInteger num;//Входное число
     private boolean sign;//Знак
 
     public void setNum(String num) throws DataFormatException {
-        num = num.replaceAll(" ", "");//Удаление лишних пробелов при 1 001 или 11 001 случаях
+        num = num.replaceAll(Constants.SPACE, "");//Удаление лишних пробелов при 1 001 или 11 001 случаях
         if (num.isEmpty()//Проверка пустой строки
                 || num.equals("-")//Проверка если стоит только знак
                 || (num.matches(".*\\W.*") && !num.matches(".*-.*"))//Проверка спец символов (*<_.>,)
@@ -35,7 +35,8 @@ public class NumericToText {
     }
 
     public String getText() {
-        res.setLength(i = 0);
+        res = new StringBuilder(" ");
+        i = 0;
         if (!sign)//Проверка на отрицательное число и удаление лишних пробелов
             return numericToText(num, (byte) 0).insert(0, "минус ").toString().trim();
         else
@@ -49,9 +50,9 @@ public class NumericToText {
             return res;
         byte unit = num.mod(BigInteger.TEN).byteValue();//Взяли последнюю цифру числа
         i += 1;
-        if (unit == 0)
-            return numericToText(num.divide(BigInteger.valueOf(10)), unit);//Если последняя цифра 0, то пропускаем
         if ((i - 1) % 3 == 0 && i > 3) {//Проверка на суффиксы (после каждых трех цифр)
+            if (i / 3 - 2 >= 0 && res.substring(0, res.indexOf(Constants.SPACE)).contains(Constants.SUFFIX.get((i / 3) - 2)))//проверка если шло три нуля подряд
+                res.delete(0, res.indexOf(Constants.SPACE) + 1);
             boolean b = num.divide(BigInteger.TEN).mod(BigInteger.TEN).compareTo(BigInteger.ONE) != 0;
             if (unit == 1 && b)
                 res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_ONE.get((i / 3) - 1));//Поставить суффиксы со склонениями при 1
@@ -60,7 +61,7 @@ public class NumericToText {
             else
                 res.insert(0, Constants.SPACE).insert(0, Constants.SUFFIX_FIVE_TO_NINETEEN.get((i / 3) - 1));//Поставить суффиксы со склонениями при 5-19
         }
-        if (i % 3 == 0) {//Проверка сотен (каждая третья цифра)
+        if (i % 3 == 0 && unit != 0) {//Проверка сотен (каждая третья цифра)
             res.insert(0, Constants.SPACE).insert(0, Constants.HUNDRED.get(unit - 1));
             return numericToText(num.divide(BigInteger.valueOf(10)), unit);
         }
@@ -69,13 +70,13 @@ public class NumericToText {
                 if (prev != 0)
                     res.delete(0, res.indexOf(Constants.SPACE) + 1);
                 res.insert(0, Constants.SPACE).insert(0, Constants.VALUE_UNIT_DOUBLE.get(prev));
-            } else//В остальных случаях выбирать значения 20, 30, 40... 90
+            } else if (unit != 0)//В остальных случаях выбирать значения 20, 30, 40... 90
                 res.insert(0, Constants.SPACE).insert(0, Constants.VALUE_DOUBLE.get(unit - 2));
             return numericToText(num.divide(BigInteger.valueOf(10)), unit);
         }
-        if (i > 3 && i < 7)//Проверка единиц (первое число если брать по три)
+        if (i > 3 && i < 7 && unit != 0)//Проверка единиц (первое число если брать по три)
             res.insert(0, Constants.SPACE).insert(0, Constants.VALUE_MOD.get(unit - 1));//Если это тысячи, то склоняем
-        else
+        else if (unit != 0)
             res.insert(0, Constants.SPACE).insert(0, Constants.VALUE.get(unit - 1));//Единицы без склонений
         return numericToText(num.divide(BigInteger.valueOf(10)), unit);
     }
