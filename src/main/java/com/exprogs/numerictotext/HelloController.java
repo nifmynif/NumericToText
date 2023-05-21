@@ -9,9 +9,9 @@ import java.util.zip.DataFormatException;
 
 public class HelloController {
     @FXML
-    public CheckBox test;
+    private CheckBox test;
     @FXML
-    public TextField inputTest;
+    private TextField inputTest;
     @FXML
     private Label output;
     @FXML
