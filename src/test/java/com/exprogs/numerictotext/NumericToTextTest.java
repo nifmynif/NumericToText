@@ -1,7 +1,11 @@
 package com.exprogs.numerictotext;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.zip.DataFormatException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,7 +49,7 @@ class NumericToTextTest {
     void getTextMinesOne() throws DataFormatException {
         NumericToText numeric = new NumericToText();
         numeric.setNum("-1");
-        assertEquals("Минус один", numeric.getText());
+        assertEquals("минус один", numeric.getText());
     }
 
     @Test
@@ -64,5 +68,18 @@ class NumericToTextTest {
     void getTextMinesOneHausenOneHandedOne() throws DataFormatException {
         NumericToText numeric = new NumericToText("1 101");
         assertEquals("одна тысяча сто один", numeric.getText());
+    }
+
+    @Test
+    public void testDDT() throws Exception {
+        InputStream in = new FileInputStream("src/test/resources/DDT.xls");
+        HSSFWorkbook wb = new HSSFWorkbook(in);
+        DataFormatter formatter = new DataFormatter();
+        NumericToText numeric = new NumericToText();
+        Sheet sheet = wb.getSheet("Лист1");
+        for (Row row : sheet) {
+            numeric.setNum(formatter.formatCellValue(row.getCell(0)));
+            assertEquals(row.getCell(1).getStringCellValue(), numeric.getText());
+        }
     }
 }

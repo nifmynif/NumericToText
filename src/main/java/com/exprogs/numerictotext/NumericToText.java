@@ -37,7 +37,7 @@ public class NumericToText {
     public String getText() {
         res.setLength(i = 0);
         if (!sign)//Проверка на отрицательное число и удаление лишних пробелов
-            return numericToText(num, (byte) 0).insert(0, "Минус ").toString().trim();
+            return numericToText(num, (byte) 0).insert(0, "минус ").toString().trim();
         else
             return numericToText(num, (byte) 0).toString().trim();
     }
