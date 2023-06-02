@@ -88,17 +88,17 @@ public class Constants {
 
     public static final ArrayList<String> SUFFIX_ONE = new ArrayList<>();
 
-    public static final ArrayList<String> SUFFIX_TWO_FOUR = new ArrayList<>();
+    public static final ArrayList<String> SUFFIX_TWO_TO_FOUR = new ArrayList<>();
 
     public static final ArrayList<String> SUFFIX_FIVE_TO_NINETEEN = new ArrayList<>();
 
     static {//Склоняем приставки
         SUFFIX_ONE.add(SUFFIX.get(0) + "а");
-        SUFFIX_TWO_FOUR.add(SUFFIX.get(0) + "и");
+        SUFFIX_TWO_TO_FOUR.add(SUFFIX.get(0) + "и");
         SUFFIX_FIVE_TO_NINETEEN.add(SUFFIX.get(0));
         for (int i = 1; i < SUFFIX.size(); i++) {
             SUFFIX_ONE.add(SUFFIX.get(i));
-            SUFFIX_TWO_FOUR.add(SUFFIX.get(i) + "а");
+            SUFFIX_TWO_TO_FOUR.add(SUFFIX.get(i) + "а");
             SUFFIX_FIVE_TO_NINETEEN.add(SUFFIX.get(i) + "ов");
         }
     }

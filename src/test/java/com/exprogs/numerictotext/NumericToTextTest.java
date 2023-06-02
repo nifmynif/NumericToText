@@ -35,7 +35,7 @@ class NumericToTextTest {
 
     @Test
     void getTextZero() throws DataFormatException {
-        NumericToText numeric = new NumericToText("0");
+        NumericToText numeric = new NumericToText("000");
         assertEquals("ноль", numeric.getText());
     }
 
