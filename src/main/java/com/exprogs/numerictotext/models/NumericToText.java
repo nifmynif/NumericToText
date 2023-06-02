@@ -1,6 +1,14 @@
 package com.exprogs.numerictotext.models;
 
 import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.models.hundred.Hundred;
+import com.exprogs.numerictotext.models.suffix.SuffixInterfaceFiveToNineteen;
+import com.exprogs.numerictotext.models.suffix.SuffixInterfaceOne;
+import com.exprogs.numerictotext.models.suffix.SuffixInterfaceTwoToFour;
+import com.exprogs.numerictotext.models.ten.Double;
+import com.exprogs.numerictotext.models.ten.UnitDouble;
+import com.exprogs.numerictotext.models.unit.Value;
+import com.exprogs.numerictotext.models.unit.ValueMod;
 
 import java.util.zip.DataFormatException;
 
@@ -38,29 +46,29 @@ public class NumericToText {
             if (i / 3 - 2 >= 0 && res.isTripleZero(i))
                 res.removeFirstWord();
             if (unit == 1 && num.isOneForSuffix())
-                res.setSuffixOne(i);
+                res.setSuffix(new SuffixInterfaceOne(i));
             else if (unit > 1 && unit < 5 && num.isOneForSuffix())
-                res.setSuffixTwoToFour(i);
+                res.setSuffix(new SuffixInterfaceTwoToFour(i));
             else
-                res.setSuffixFiveToNineteen(i);
+                res.setSuffix(new SuffixInterfaceFiveToNineteen(i));
         }
         if (i % 3 == 0 && unit != 0) {//Проверка сотен (каждая третья цифра)
-            res.setHundred(unit);
+            res.setHundred(new Hundred(unit));
             return numericToText(num.removeLastNumber(), i);
         }
         if ((i + 1) % 3 == 0) {//Проверка десятков (каждая вторая цифра если брать по три)
             if (num.isOneForTen()) {
                 if (num.getPrev() != 0)
                     res.removeFirstWord();
-                res.setValueUnitDouble(num.getPrev());
+                res.setTen(new UnitDouble(num.getPrev()));
             } else if (unit != 0)
-                res.setValueDouble(unit);
+                res.setTen(new Double(unit));
             return numericToText(num.removeLastNumber(), i);
         }
         if (i > 3 && i < 7 && unit != 0)//Проверка единиц (первое число если брать по три)
-            res.setValueMod(unit);
+            res.setValue(new ValueMod(unit));
         else if (unit != 0)
-            res.setValue(unit);
+            res.setValue(new Value(unit));
         return numericToText(num.removeLastNumber(), i);
     }
 }
