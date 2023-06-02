@@ -1,5 +1,7 @@
 package com.exprogs.numerictotext;
 
+import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.models.NumericToText;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.junit.jupiter.api.Test;
@@ -26,10 +28,8 @@ class NumericToTextTest {
     void getTextBigNumberException() {
         try {
             new NumericToText("1".repeat(((Constants.SUFFIX.size() + 1) * 3) + 1));
-        } catch (IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             assertEquals("мы еще не придумали названия этому числу(", e.getMessage());
-        } catch (DataFormatException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -66,8 +66,13 @@ class NumericToTextTest {
 
     @Test
     void getTextMinesOneHausenOneHandedOne() throws DataFormatException {
-        NumericToText numeric = new NumericToText("1 101");
-        assertEquals("одна тысяча сто один", numeric.getText());
+        NumericToText numeric = new NumericToText("-1 101");
+        assertEquals("минус одна тысяча сто один", numeric.getText());
+    }
+    @Test
+    void getTextOneMillion() throws DataFormatException {
+        NumericToText numeric = new NumericToText("1 000 000");
+        assertEquals("один миллион", numeric.getText());
     }
 
     @Test

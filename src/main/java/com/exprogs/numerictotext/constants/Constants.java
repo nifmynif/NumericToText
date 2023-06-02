@@ -1,11 +1,11 @@
-package com.exprogs.numerictotext;
+package com.exprogs.numerictotext.constants;
 
 import java.util.ArrayList;
 
 public class Constants {
     public static final String SPACE = " ";
     public static final String ZERO = "ноль";
-    public static final ArrayList<String> VALUE = new ArrayList<>();//Единицы
+    public static final ArrayList<String> VALUE = new ArrayList<>();
 
     static {
         VALUE.add("один");
@@ -19,21 +19,17 @@ public class Constants {
         VALUE.add("девять");
     }
 
-    public static final ArrayList<String> VALUE_MOD = new ArrayList<>();//Единицы со склонениями
+    public static final ArrayList<String> VALUE_MOD = new ArrayList<>();
 
     static {
         VALUE_MOD.add("одна");
         VALUE_MOD.add("две");
-        VALUE_MOD.add("три");
-        VALUE_MOD.add("четыре");
-        VALUE_MOD.add("пять");
-        VALUE_MOD.add("шесть");
-        VALUE_MOD.add("семь");
-        VALUE_MOD.add("восемь");
-        VALUE_MOD.add("девять");
+        for (int i = 2; i < VALUE.size(); i++) {
+            VALUE_MOD.add(VALUE.get(i));
+        }
     }
 
-    public static final ArrayList<String> VALUE_UNIT_DOUBLE = new ArrayList<>();//Десятки где 1
+    public static final ArrayList<String> VALUE_UNIT_DOUBLE = new ArrayList<>();
 
     static {
         VALUE_UNIT_DOUBLE.add("десять");
@@ -48,7 +44,7 @@ public class Constants {
         VALUE_UNIT_DOUBLE.add("девятнадцать");
     }
 
-    public static final ArrayList<String> VALUE_DOUBLE = new ArrayList<>();//Остальные десятки
+    public static final ArrayList<String> VALUE_DOUBLE = new ArrayList<>();
 
     static {
         VALUE_DOUBLE.add("двадцать");
@@ -61,7 +57,7 @@ public class Constants {
         VALUE_DOUBLE.add("девяносто");
     }
 
-    public static final ArrayList<String> HUNDRED = new ArrayList<>();//Сотни
+    public static final ArrayList<String> HUNDRED = new ArrayList<>();
 
     static {
         HUNDRED.add("сто");
@@ -75,7 +71,7 @@ public class Constants {
         HUNDRED.add("девятьсот");
     }
 
-    public static final ArrayList<String> SUFFIX = new ArrayList<>();// Приставки
+    public static final ArrayList<String> SUFFIX = new ArrayList<>();
 
     static {
         SUFFIX.add("тысяч");
@@ -90,11 +86,11 @@ public class Constants {
         SUFFIX.add("нониллион");
     }
 
-    public static final ArrayList<String> SUFFIX_ONE = new ArrayList<>();//Приставки если 1
+    public static final ArrayList<String> SUFFIX_ONE = new ArrayList<>();
 
-    public static final ArrayList<String> SUFFIX_TWO_FOUR = new ArrayList<>();//Приставки если 2-4
+    public static final ArrayList<String> SUFFIX_TWO_FOUR = new ArrayList<>();
 
-    public static final ArrayList<String> SUFFIX_FIVE_TO_NINETEEN = new ArrayList<>();//Приставки если 5-19
+    public static final ArrayList<String> SUFFIX_FIVE_TO_NINETEEN = new ArrayList<>();
 
     static {//Склоняем приставки
         SUFFIX_ONE.add(SUFFIX.get(0) + "а");

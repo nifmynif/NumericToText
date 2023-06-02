@@ -1,4 +1,6 @@
-package com.exprogs.numerictotext;
+package com.exprogs.numerictotext.models;
+
+import com.exprogs.numerictotext.constants.Constants;
 
 import java.math.BigInteger;
 import java.util.zip.DataFormatException;
@@ -6,6 +8,7 @@ import java.util.zip.DataFormatException;
 public class Number {
     private BigInteger number;
     private boolean sign;
+    private byte prev;
 
     public Number(String num) throws DataFormatException {
         setNumber(num);
@@ -44,16 +47,21 @@ public class Number {
         return number.mod(BigInteger.TEN).byteValue();
     }
 
-    public boolean isOneForSufix() {
+    public boolean isOneForSuffix() {
         return number.divide(BigInteger.TEN).mod(BigInteger.TEN).compareTo(BigInteger.ONE) != 0;
     }
 
     public Number removeLastNumber() {
+        prev = getLastNumber();
         number = number.divide(BigInteger.valueOf(10));
         return this;
     }
 
     public boolean isOneForTen() {
         return number.mod(BigInteger.TEN).compareTo(BigInteger.ONE) == 0;
+    }
+
+    public byte getPrev() {
+        return prev;
     }
 }

@@ -1,5 +1,6 @@
 package com.exprogs.numerictotext;
 
+import com.exprogs.numerictotext.models.NumericToText;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;

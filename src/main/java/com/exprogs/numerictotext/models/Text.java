@@ -1,4 +1,6 @@
-package com.exprogs.numerictotext;
+package com.exprogs.numerictotext.models;
+
+import com.exprogs.numerictotext.constants.Constants;
 
 public class Text {
     private final StringBuilder text;
