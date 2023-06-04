@@ -1,6 +1,7 @@
 package com.exprogs.numerictotext;
 
 import com.exprogs.numerictotext.models.NumericToText;
+import com.exprogs.numerictotext.models.NumericToTextRU;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -21,14 +22,14 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClick() {
         output.setText("");
-        NumericToText numeric = new NumericToText();
+        NumericToText numeric = new NumericToTextRU();
         String[] inputElements = input.getText().split(",");
         String[] inputTestElements = inputTest.getText().split(",");
         if (test.isSelected()) {
             for (int i = 0; i < inputElements.length && i < inputTestElements.length; i++) {
                 try {
                     numeric.setNum(inputElements[i]);
-                    output.setText(output.getText() + "\n" + numeric.getText().equals(inputTestElements[i].trim()));
+                    output.setText(output.getText() + "\n" + numeric.getResText().equals(inputTestElements[i].trim()));
                 } catch (DataFormatException | IndexOutOfBoundsException e) {
                     output.setText(output.getText() + "\n" + e.getMessage().equals(inputTestElements[i].trim()));
                 }

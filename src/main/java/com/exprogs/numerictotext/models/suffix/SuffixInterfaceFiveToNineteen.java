@@ -1,6 +1,6 @@
 package com.exprogs.numerictotext.models.suffix;
 
-import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.constants.ConstantsRU;
 
 public class SuffixInterfaceFiveToNineteen implements SuffixInterface {
     private final byte i;
@@ -11,6 +11,6 @@ public class SuffixInterfaceFiveToNineteen implements SuffixInterface {
 
     @Override
     public String getSuffix() {
-        return Constants.SUFFIX_FIVE_TO_NINETEEN.get((i / 3) - 1);
+        return ConstantsRU.SUFFIX_FIVE_TO_NINETEEN.get((i / 3) - 1);
     }
 }

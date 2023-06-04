@@ -1,6 +1,6 @@
 package com.exprogs.numerictotext.models;
 
-import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.constants.ConstantsRU;
 
 import java.math.BigInteger;
 import java.util.zip.DataFormatException;
@@ -20,9 +20,9 @@ public class Number {
                 || (number.matches(".*\\W.*") && !number.matches(".*-.*"))
                 || (number.matches(".*\\D.*") && !number.matches(".*-.*"))
                 || (number.matches(".*-.*") && number.lastIndexOf("-") != 0))
-            throw new DataFormatException("введено не число");
-        if (number.length() > (Constants.SUFFIX.size() + 1) * 3)//checking the length of a number
-            throw new IndexOutOfBoundsException("мы еще не придумали названия этому числу(");
+            throw new DataFormatException();
+        if (number.length() > (ConstantsRU.SUFFIX.size() + 1) * 3)//checking the length of a number
+            throw new IndexOutOfBoundsException();
         this.number = new BigInteger(number);
         checkSign();
     }

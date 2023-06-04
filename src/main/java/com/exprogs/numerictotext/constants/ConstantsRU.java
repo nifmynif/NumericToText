@@ -2,7 +2,7 @@ package com.exprogs.numerictotext.constants;
 
 import java.util.ArrayList;
 
-public class Constants {
+public class ConstantsRU {
     public static final String SPACE = " ";
     public static final String ZERO = "ноль";
     public static final ArrayList<String> VALUE = new ArrayList<>();

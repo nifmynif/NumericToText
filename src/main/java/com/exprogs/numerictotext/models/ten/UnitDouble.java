@@ -1,6 +1,6 @@
 package com.exprogs.numerictotext.models.ten;
 
-import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.constants.ConstantsRU;
 
 public class UnitDouble implements TenInterface{
     private final byte i;
@@ -11,6 +11,6 @@ public class UnitDouble implements TenInterface{
 
     @Override
     public String getTen() {
-        return Constants.VALUE_UNIT_DOUBLE.get(i);
+        return ConstantsRU.VALUE_UNIT_DOUBLE.get(i);
     }
 }

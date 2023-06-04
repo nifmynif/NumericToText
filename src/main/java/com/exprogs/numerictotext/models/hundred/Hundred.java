@@ -1,6 +1,6 @@
 package com.exprogs.numerictotext.models.hundred;
 
-import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.constants.ConstantsRU;
 
 public class Hundred implements HundredInterface{
     private final byte i;
@@ -11,6 +11,6 @@ public class Hundred implements HundredInterface{
 
     @Override
     public String getHundred() {
-        return Constants.HUNDRED.get(i - 1);
+        return ConstantsRU.HUNDRED.get(i - 1);
     }
 }

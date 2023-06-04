@@ -1,6 +1,6 @@
 package com.exprogs.numerictotext.models.unit;
 
-import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.constants.ConstantsRU;
 
 public class ValueMod implements ValueInterface {
     private final byte i;
@@ -11,6 +11,6 @@ public class ValueMod implements ValueInterface {
 
     @Override
     public String getValue() {
-        return Constants.VALUE_MOD.get(i - 1);
+        return ConstantsRU.VALUE_MOD.get(i - 1);
     }
 }

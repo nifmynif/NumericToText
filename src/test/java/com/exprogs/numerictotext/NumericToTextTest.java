@@ -1,7 +1,8 @@
 package com.exprogs.numerictotext;
 
-import com.exprogs.numerictotext.constants.Constants;
+import com.exprogs.numerictotext.constants.ConstantsRU;
 import com.exprogs.numerictotext.models.NumericToText;
+import com.exprogs.numerictotext.models.NumericToTextRU;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.junit.jupiter.api.Test;
@@ -17,8 +18,7 @@ class NumericToTextTest {
     @Test
     void getTextWrongNumberException() {
         try {
-            NumericToText numeric = new NumericToText("");
-            numeric.getText();
+            new NumericToTextRU("");
         } catch (DataFormatException e) {
             assertEquals("введено не число", e.getMessage());
         }
@@ -27,7 +27,7 @@ class NumericToTextTest {
     @Test
     void getTextBigNumberException() {
         try {
-            new NumericToText("1".repeat(((Constants.SUFFIX.size() + 1) * 3) + 1));
+            new NumericToTextRU("1".repeat(((ConstantsRU.SUFFIX.size() + 1) * 3) + 1));
         } catch (Exception e) {
             assertEquals("мы еще не придумали названия этому числу(", e.getMessage());
         }
@@ -35,39 +35,45 @@ class NumericToTextTest {
 
     @Test
     void getTextZero() throws DataFormatException {
-        NumericToText numeric = new NumericToText("000");
-        assertEquals("ноль", numeric.getText());
+        NumericToText numeric = new NumericToTextRU("000");
+        numeric.work();
+        assertEquals("ноль", numeric.getResText());
     }
 
     @Test
     void getTextOne() throws DataFormatException {
-        NumericToText numeric = new NumericToText("1");
-        assertEquals("один", numeric.getText());
+        NumericToText numeric = new NumericToTextRU("1");
+        numeric.work();
+        assertEquals("один", numeric.getResText());
     }
 
     @Test
     void getTextMinesOne() throws DataFormatException {
-        NumericToText numeric = new NumericToText();
+        NumericToText numeric = new NumericToTextRU();
         numeric.setNum("-1");
-        assertEquals("минус один", numeric.getText());
+        numeric.work();
+        assertEquals("минус один", numeric.getResText());
     }
 
     @Test
     void getTextTwenty() throws DataFormatException {
-        NumericToText numeric = new NumericToText("20");
-        assertEquals("двадцать", numeric.getText());
+        NumericToText numeric = new NumericToTextRU("20");
+        numeric.work();
+        assertEquals("двадцать", numeric.getResText());
     }
 
     @Test
     void getTextMinesOneHausenOneHandedOne() throws DataFormatException {
-        NumericToText numeric = new NumericToText("-1 101");
-        assertEquals("минус одна тысяча сто один", numeric.getText());
+        NumericToText numeric = new NumericToTextRU("-1 101");
+        numeric.work();
+        assertEquals("минус одна тысяча сто один", numeric.getResText());
     }
 
     @Test
     void getTextOneMillion() throws DataFormatException {
-        NumericToText numeric = new NumericToText("1 000 000");
-        assertEquals("один миллион", numeric.getText());
+        NumericToText numeric = new NumericToTextRU("1 000 000");
+        numeric.work();
+        assertEquals("один миллион", numeric.getResText());
     }
 
     @Test
@@ -75,11 +81,12 @@ class NumericToTextTest {
         try (InputStream in = new FileInputStream("src/test/resources/DDT.xls");
              HSSFWorkbook wb = new HSSFWorkbook(in)) {
             DataFormatter formatter = new DataFormatter();
-            NumericToText numeric = new NumericToText();
+            NumericToText numeric = new NumericToTextRU();
             Sheet sheet = wb.getSheet("Лист1");
             for (Row row : sheet) {
                 numeric.setNum(formatter.formatCellValue(row.getCell(0)));
-                assertEquals(row.getCell(1).getStringCellValue(), numeric.getText());
+                numeric.work();
+                assertEquals(row.getCell(1).getStringCellValue(), numeric.getResText());
             }
         }
     }
