@@ -29,10 +29,10 @@ public class NumericToText {
 
     public String getText() {
         res = new Text();
-        if (!num.getSign())
-            return numericToText(num, (byte) 0).setNegativeSign();
-        else
+        if (num.getSign())
             return numericToText(num, (byte) 0).setPositiveSign();
+        else
+            return numericToText(num, (byte) 0).setNegativeSign();
     }
 
     private Text numericToText(Number num, byte i) {
@@ -40,35 +40,34 @@ public class NumericToText {
             return res.returnZero();
         if (num.checkZero())
             return res;
-        byte unit = num.getLastNumber();
         i += 1;
-        if ((i - 1) % 3 == 0 && i > 3) {//Проверка на суффиксы (после каждых трех цифр)
+        if ((i - 1) % 3 == 0 && i > 3) {//check suffix(after 3 units)
             if (i / 3 - 2 >= 0 && res.isTripleZero(i))
                 res.removeFirstWord();
-            if (unit == 1 && num.isOneForSuffix())
+            if (num.getLastNumber() == 1 && num.isOneForSuffix())
                 res.setSuffix(new SuffixInterfaceOne(i));
-            else if (unit > 1 && unit < 5 && num.isOneForSuffix())
+            else if (num.getLastNumber() > 1 && num.getLastNumber() < 5 && num.isOneForSuffix())
                 res.setSuffix(new SuffixInterfaceTwoToFour(i));
             else
                 res.setSuffix(new SuffixInterfaceFiveToNineteen(i));
         }
-        if (i % 3 == 0 && unit != 0) {//Проверка сотен (каждая третья цифра)
-            res.setHundred(new Hundred(unit));
+        if (i % 3 == 0 && num.getLastNumber() != 0) {//check hundred(every 3 unit)
+            res.setHundred(new Hundred(num.getLastNumber()));
             return numericToText(num.removeLastNumber(), i);
         }
-        if ((i + 1) % 3 == 0) {//Проверка десятков (каждая вторая цифра если брать по три)
+        if ((i + 1) % 3 == 0) {//check ten(every second unit if you take three)
             if (num.isOneForTen()) {
                 if (num.getPrev() != 0)
                     res.removeFirstWord();
                 res.setTen(new UnitDouble(num.getPrev()));
-            } else if (unit != 0)
-                res.setTen(new Double(unit));
+            } else if (num.getLastNumber() != 0)
+                res.setTen(new Double(num.getLastNumber()));
             return numericToText(num.removeLastNumber(), i);
         }
-        if (i > 3 && i < 7 && unit != 0)//Проверка единиц (первое число если брать по три)
-            res.setValue(new ValueMod(unit));
-        else if (unit != 0)
-            res.setValue(new Value(unit));
+        if (i > 3 && i < 7 && num.getLastNumber() != 0)//check unit(every first unit if you take three)
+            res.setValue(new ValueMod(num.getLastNumber()));
+        else if (num.getLastNumber() != 0)
+            res.setValue(new Value(num.getLastNumber()));
         return numericToText(num.removeLastNumber(), i);
     }
 }

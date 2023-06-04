@@ -15,13 +15,13 @@ public class Number {
     }
 
     public void setNumber(String number) throws DataFormatException {
-        if (number.isEmpty()//Проверка пустой строки
-                || number.equals("-")//Проверка если стоит только знак
-                || (number.matches(".*\\W.*") && !number.matches(".*-.*"))//Проверка спец символов (*<_.>,)
-                || (number.matches(".*\\D.*") && !number.matches(".*-.*"))//Проверка на буквы
-                || (number.matches(".*-.*") && number.lastIndexOf("-") != 0))//Проверка чтобы знак стоял на своем месте
+        if (number.isEmpty()//input validation
+                || number.equals("-")
+                || (number.matches(".*\\W.*") && !number.matches(".*-.*"))
+                || (number.matches(".*\\D.*") && !number.matches(".*-.*"))
+                || (number.matches(".*-.*") && number.lastIndexOf("-") != 0))
             throw new DataFormatException("введено не число");
-        if (number.length() > (Constants.SUFFIX.size() + 1) * 3)//Условие если введенное число больше чем то что можно обработать
+        if (number.length() > (Constants.SUFFIX.size() + 1) * 3)//checking the length of a number
             throw new IndexOutOfBoundsException("мы еще не придумали названия этому числу(");
         this.number = new BigInteger(number);
         checkSign();
@@ -47,7 +47,7 @@ public class Number {
         return number.mod(BigInteger.TEN).byteValue();
     }
 
-    public boolean isOneForSuffix() {
+    public boolean isOneForSuffix() {//case for suffix when last unit is 1
         return number.divide(BigInteger.TEN).mod(BigInteger.TEN).compareTo(BigInteger.ONE) != 0;
     }
 
@@ -57,7 +57,7 @@ public class Number {
         return this;
     }
 
-    public boolean isOneForTen() {
+    public boolean isOneForTen() {//11-19 check
         return number.mod(BigInteger.TEN).compareTo(BigInteger.ONE) == 0;
     }
 

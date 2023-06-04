@@ -26,7 +26,7 @@ public class Text {
         return this;
     }
 
-    public boolean isTripleZero(byte i) {
+    public boolean isTripleZero(byte i) {//if the zeros go one after the other three times
         return text.substring(0, text.indexOf(Constants.SPACE)).contains(Constants.SUFFIX.get((i / 3) - 2));
     }
 
